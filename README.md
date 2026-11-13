@@ -42,6 +42,32 @@ Save interesting articles, videos and links. Search them later. Explore automati
 > [!IMPORTANT]
 > **NeuralKeep is an integration and documentation project — not a Karakeep fork or a finished product.** Local AI tagging is being configured and has **not yet been verified end-to-end**.
 
+## 💡 Where it began: WhatsApp → ChatGPT → Karakeep
+
+NeuralKeep began with a practical problem: **years of useful links shared in WhatsApp conversations are difficult to find again**. Instead of leaving that knowledge buried in chat history, the idea was to turn it into a searchable, self-hosted library.
+
+The initial workflow was:
+
+1. **Export the WhatsApp chat data.** Use the exported conversation as the source for links and their surrounding context.
+2. **Process the export with ChatGPT.** Extract URLs, remove duplicates, preserve available WhatsApp timestamps and group links by platform or topic. This is a **one-off preparation step**, not the planned local AI integration.
+3. **Generate a bookmark import file.** ChatGPT prepared a browser-bookmark HTML file named `WhatsApp_Karakeep_Import.html` containing **1,747 distinct links** after deduplication.
+4. **Import into Karakeep.** Upload the HTML file via **Settings → Import / Export → HTML**. Karakeep then processes the queued bookmarks, fetches available page metadata and previews, and indexes content using Meilisearch.
+5. **Build on the archive.** The next step is to explore **local Qwen inference via MLX** for private tagging and organisation, without relying on ChatGPT for ongoing bookmark analysis.
+
+```mermaid
+flowchart LR
+    W["WhatsApp chat export"] --> P["ChatGPT: extract, deduplicate, organise"]
+    P --> H["Bookmark HTML: 1,747 unique links"]
+    H --> K["Karakeep import"]
+    K --> C["Crawler and previews"]
+    K --> S["Meilisearch index"]
+    K -. "Planned / unverified" .-> L["Local MLX + Qwen"]
+```
+
+**Current status:** The HTML import was started and the crawler/indexer has been processing the queue; this does **not** mean every link has finished importing successfully. Some source pages may be unavailable, require authentication or provide unsupported preview assets. The local AI pipeline remains experimental.
+
+**Privacy note:** WhatsApp exports can contain personal messages, names, phone numbers and private URLs. Keep raw exports, generated bookmark files and the resulting library **out of this public repository**. The historical ChatGPT preparation step involved sharing exported content with a hosted AI service; it should not be described as an entirely local or offline workflow. Future local processing is a separate project goal.
+
 ## ⚡ At a glance
 
 | 📥 Collect | 🔎 Rediscover | 🔒 Stay private | 🧠 Think locally |
