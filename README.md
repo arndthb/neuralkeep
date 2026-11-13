@@ -19,6 +19,18 @@
 
 ---
 
+## ❤️ Support Karakeep — the project that makes NeuralKeep possible
+
+> [!IMPORTANT]
+> **NeuralKeep is built on top of [Karakeep](https://github.com/karakeep-app/karakeep). If you find NeuralKeep useful, please consider supporting the original Karakeep developers.** Their work makes this project possible.
+>
+> **💖 [SUPPORT / SPONSOR KARAKEEP — VISIT THE OFFICIAL REPOSITORY](https://github.com/karakeep-app/karakeep)**  
+> Look for the **Sponsor** button and the project's official funding options. A GitHub star, bug report or contribution also helps.
+
+NeuralKeep is an independent integration project, **not an official Karakeep product**. Please direct upstream support and credit to the Karakeep maintainers.
+
+---
+
 ## ✨ The idea
 
 **Your bookmarks deserve better than a forgotten folder.**
