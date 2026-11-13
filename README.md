@@ -119,7 +119,15 @@ Read [SECURITY.md](SECURITY.md) before exposing services or sharing logs.
 
 **v0.1 · Experimental / actively documented**
 
-NeuralKeep brings existing open-source tools together. It is an independent community project and is **not affiliated with or endorsed by Karakeep**. All upstream components retain their respective licences.
+NeuralKeep brings existing open-source tools together. It is an independent community project and is **not affiliated with or endorsed by Karakeep**.
+
+### Licensing and upstream software
+
+**NeuralKeep's original documentation, configuration examples and other original files in this repository are MIT-licensed** (see [LICENSE](LICENSE)).
+
+**Karakeep is a separate upstream project licensed under the GNU Affero General Public License v3.0 (AGPL-3.0).** NeuralKeep does not vendor, redistribute or modify Karakeep's source code; users obtain it separately from [the official Karakeep repository](https://github.com/karakeep-app/karakeep) or its published images. Karakeep's AGPL-3.0 terms continue to apply to Karakeep independently of NeuralKeep's MIT licence.
+
+Other dependencies retain their own licences. If this repository later distributes upstream code or derivative works, the licensing implications will need to be reassessed.
 
 ---
 
