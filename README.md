@@ -44,7 +44,7 @@ Save interesting articles, videos and links. Search them later. Explore automati
 
 ## 💡 Where it began: WhatsApp → ChatGPT → Karakeep
 
-NeuralKeep began with a practical problem: **years of useful links shared in WhatsApp conversations are difficult to find again**. Instead of leaving that knowledge buried in chat history, the idea was to turn it into a searchable, self-hosted library.
+NeuralKeep began with a practical problem: **roughly 2,000 bookmarks and links had accumulated in WhatsApp conversations over time**, making useful discoveries increasingly difficult to find again. Instead of leaving that knowledge buried in chat history, the idea was to turn it into a searchable, self-hosted library.
 
 The initial workflow was:
 
