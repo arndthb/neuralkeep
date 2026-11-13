@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-label="NeuralKeep: Your knowledge. Your hardware. Your intelligence.">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#08131f"/><stop offset="1" stop-color="#122d36"/></linearGradient><linearGradient id="accent"><stop stop-color="#5ef4d6"/><stop offset="1" stop-color="#7da8ff"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#214350" stroke-width=".7"/></pattern></defs>
+<rect width="1200" height="340" rx="24" fill="url(#bg)"/><rect width="1200" height="340" rx="24" fill="url(#grid)" opacity=".45"/>
+<g fill="none" stroke="#54eacb" stroke-width="2" opacity=".7"><circle cx="1020" cy="170" r="94"/><circle cx="1020" cy="170" r="62"/><circle cx="1020" cy="170" r="29"/><path d="M925 170h190M1020 75v190M953 103l134 134M1087 103 953 237"/></g>
+<g fill="#76f7db"><circle cx="1020" cy="170" r="11"/><circle cx="925" cy="170" r="7"/><circle cx="1087" cy="103" r="7"/><circle cx="953" cy="237" r="7"/><circle cx="1020" cy="75" r="7"/></g>
+<rect x="66" y="54" width="182" height="29" rx="14" fill="#173c42" stroke="#377f79"/><text x="86" y="74" font-family="Arial,sans-serif" font-size="13" fill="#9af8e5" letter-spacing="2">SELF-HOSTED AI</text>
+<text x="64" y="167" font-family="Arial,sans-serif" font-size="75" font-weight="700" fill="url(#accent)">NeuralKeep</text>
+<text x="68" y="216" font-family="Arial,sans-serif" font-size="23" fill="#d7e7ed">Your knowledge. Your hardware. Your intelligence.</text>
+<text x="68" y="278" font-family="Arial,sans-serif" font-size="16" fill="#7fabb5" letter-spacing="2">COLLECT  /  SEARCH  /  ORGANISE  /  OWN</text>
+</svg>
