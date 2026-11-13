@@ -1,56 +1,132 @@
-# NeuralKeep 🧠
+<div align="center">
 
-**Your knowledge. Your hardware. Your intelligence.**
+![NeuralKeep banner](assets/neuralkeep-banner.svg)
 
-NeuralKeep is a self-hosted personal knowledge and bookmark library built around [Karakeep](https://github.com/karakeep-app/karakeep), Docker, private Tailscale access and optional local AI inference using Qwen on Apple Silicon.
+# 🧠 NeuralKeep
 
-> **Status: early-stage integration and documentation project (v0.1).** This is not a Karakeep fork. Local AI tagging is being configured and has not yet been validated end-to-end.
+**A private home for the things worth remembering.**
 
-## Architecture
+*Your knowledge. Your hardware. Your intelligence.*
+
+[![Status](https://img.shields.io/badge/status-experimental-ffbd69?style=for-the-badge)](#project-status)
+[![Self-hosted](https://img.shields.io/badge/self--hosted-yes-43d9bd?style=for-the-badge)](#architecture)
+[![Local AI](https://img.shields.io/badge/local_AI-in_progress-83a8ff?style=for-the-badge)](#local-ai)
+[![Platform](https://img.shields.io/badge/platform-Apple_Silicon-222c3a?style=for-the-badge)](#tech-stack)
+
+**[Explore the architecture](#architecture) · [Get started](#getting-started) · [AI integration](docs/ai-integration.md) · [Roadmap](#roadmap)**
+
+</div>
+
+---
+
+## ✨ The idea
+
+**Your bookmarks deserve better than a forgotten folder.**
+
+NeuralKeep is a self-hosted knowledge and media library built around **Karakeep**, with private access from your devices and an experimental connection to a **local Qwen language model**.
+
+Save interesting articles, videos and links. Search them later. Explore automatic organisation without sending your personal library to a third-party AI service.
+
+> [!IMPORTANT]
+> **NeuralKeep is an integration and documentation project — not a Karakeep fork or a finished product.** Local AI tagging is being configured and has **not yet been verified end-to-end**.
+
+## ⚡ At a glance
+
+| 📥 Collect | 🔎 Rediscover | 🔒 Stay private | 🧠 Think locally |
+|:--|:--|:--|:--|
+| Bookmarks, articles and videos | Search via Meilisearch | Access over a private Tailscale network | Experimental Qwen inference with MLX |
+| **Working** | **Working** | **Working** | **In progress** |
+
+## 🧩 Architecture
 
 ```mermaid
-flowchart TD
-  Phone[iPhone / browser] -->|Private tailnet| TS[Tailscale Serve]
-  TS --> Web[Karakeep web]
-  Web --> Chrome[Chromium crawler]
-  Web --> Search[Meilisearch]
-  Web -.->|OpenAI-compatible API| MLX[MLX server on macOS]
-  MLX -.-> Qwen[Local Qwen model]
+flowchart LR
+    A["📱 iPhone / Browser"] -->|"Private tailnet"| B["🔐 Tailscale Serve"]
+    B --> C["🗂️ Karakeep"]
+    subgraph D["Docker"]
+      C --> E["🌐 Chromium crawler"]
+      C --> F["🔎 Meilisearch"]
+    end
+    C -. "OpenAI-compatible API" .-> G["⚡ MLX on macOS"]
+    G -.-> H["🧠 Local Qwen"]
+    classDef ai fill:#1a3c45,stroke:#54eacb,color:#e6fffa
+    class G,H ai
 ```
 
-## Why NeuralKeep?
+**Solid arrows:** deployed application flow. **Dotted arrows:** experimental local AI integration.
 
-Bookmarks, articles and videos tend to end up scattered across apps and conversations. NeuralKeep explores a privacy-conscious, reproducible way to collect them, search them and eventually organise them with a local language model.
+## 🛠️ Tech stack
 
-## Stack
+| Layer | Technology | Role |
+|---|---|---|
+| Application | [Karakeep](https://github.com/karakeep-app/karakeep) | Bookmark and media library |
+| Containers | Docker Compose | Reproducible service deployment |
+| Capture | Chromium | Website crawling and previews |
+| Search | Meilisearch | Finding saved content |
+| Private access | Tailscale Serve | Secure access from mobile devices |
+| Local inference | MLX + Qwen | Experimental AI-assisted organisation |
+| Host | macOS / Apple Silicon | Runs the application and inference server |
 
-- **Karakeep** — bookmark management and archiving
-- **Docker Compose** — container orchestration for the application stack
-- **Chromium** — webpage crawling
-- **Meilisearch** — search
-- **Tailscale Serve** — private access from other devices
-- **MLX / Qwen** — experimental local text inference on Apple Silicon
+## 🚀 Getting started
 
-## Getting started
+This repository currently documents the reference setup rather than offering a verified one-command installer.
 
-See [docs/setup.md](docs/setup.md) for a safe deployment outline, [docs/ai-integration.md](docs/ai-integration.md) for the experimental AI connection and [docs/remote-access.md](docs/remote-access.md) for private mobile access.
+**01 — Deploy Karakeep.** Follow the [deployment guide](docs/setup.md) and the [upstream documentation](https://docs.karakeep.app/).
 
-This repository deliberately does **not** include personal bookmarks, actual service hostnames, credentials, databases or Docker volumes.
+**02 — Connect your devices.** Use [Tailscale Serve](docs/remote-access.md) for private mobile access.
 
-## Roadmap
+**03 — Experiment with local AI.** See the [MLX/Qwen integration notes](docs/ai-integration.md). Test real completions before enabling bulk tagging.
 
-- [x] Run Karakeep with Docker
-- [x] Access the application privately from a phone over Tailscale
-- [x] Connect a container to an MLX API endpoint on the macOS host
-- [ ] Verify real chat-completion requests and automatic tagging end-to-end
-- [ ] Validate a portable Compose example against a clean installation
+**04 — Keep your data yours.** Store secrets locally and keep personal bookmarks, databases and exports out of Git.
+
+## 🧠 Local AI
+
+The goal is simple: **save a link, let your own hardware help make sense of it.**
+
+```text
+Saved bookmark
+      │
+      ▼
+  Karakeep
+      │
+      ▼
+Local API endpoint ──► MLX ──► Qwen
+      │
+      ▼
+  Suggested tags  (not yet validated)
+```
+
+The reference environment can reach the MLX API from Docker. **Model listing and connectivity are not proof of successful tagging.** Chat-completion compatibility and Karakeep integration still need testing.
+
+## 🗺️ Roadmap
+
+- [x] Deploy Karakeep using Docker
+- [x] Enable private iPhone access via Tailscale
+- [x] Verify container-to-host MLX API connectivity
+- [ ] Validate a real Qwen chat-completion request
+- [ ] Verify automatic tagging end-to-end
+- [ ] Publish a clean, tested Compose example
 - [ ] Document backup and restore
-- [ ] Explore semantic search and local knowledge workflows
+- [ ] Explore semantic search and richer local knowledge workflows
 
-## Security
+## 🔐 Privacy first
 
-Never commit a real `.env`, API keys, Tailscale device names, personal bookmarks or downloaded content. Do not expose the application publicly without reviewing authentication and network security. See [SECURITY.md](SECURITY.md).
+No real credentials, private hostnames, personal IP addresses, bookmarks, databases or Docker volumes belong in this repository. Keep your real `.env` private; use [`.env.example`](.env.example) as a starting point.
 
-## Acknowledgements
+Read [SECURITY.md](SECURITY.md) before exposing services or sharing logs.
 
-NeuralKeep integrates existing open-source projects. Karakeep and its dependencies retain their respective licences. This repository is an independent community integration project, not an official Karakeep distribution.
+## 📡 Project status
+
+**v0.1 · Experimental / actively documented**
+
+NeuralKeep brings existing open-source tools together. It is an independent community project and is **not affiliated with or endorsed by Karakeep**. All upstream components retain their respective licences.
+
+---
+
+<div align="center">
+
+### Built for curious minds who prefer to own their tools.
+
+**Collect more. Lose less. Keep control.** 🧠
+
+</div>
